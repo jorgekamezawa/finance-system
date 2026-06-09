@@ -10,7 +10,7 @@ Documento de referência do projeto **Sistema de Finanças**. Define como a gent
 
 ## A pirâmide de documentos (o que é cada um)
 
-- **Épico** — o *porquê* e o *o quê* no nível de produto (problema, usuário, resultado, métrica). Não técnico. Funde dois papéis: o de **Épico** (agrupador das Stories do release) e o de **PRD** (a intenção); como o agrupamento no board já é feito pelo release + prefixo numérico, o documento carrega só a intenção — um **PRD enxuto**. No projeto solo equivale a um *release* e quem veste o chapéu de PM é o Project. É um **documento** (mora em `docs/epicos/`), **fora do board**. **Todo release tem.** (O detalhe dos dois papéis mora em `quando-usar-cada-documento.md`.)
+- **Épico** — o *porquê* e o *o quê* no nível de produto (problema, usuário, resultado, métrica). Não técnico. Funde dois papéis: o de **Épico** (agrupador das Stories do release) e o de **PRD** (a intenção); como o agrupamento no board já é feito pelo release + prefixo numérico, o documento carrega só a intenção — um **PRD enxuto**. No projeto solo equivale a um *release* e quem veste o chapéu de PM é o Project do Claude.ai. É um **documento** (mora em `docs/epicos/`), **fora do board**. **Todo release tem.** (O detalhe dos dois papéis mora em `quando-usar-cada-documento.md`.)
 - **RFC (Request for Comments)** — proposta de solução pra uma feature parruda/arriscada, pra discutir o desenho antes de comprometer. Costuma *parir* ADRs. **Só pra coisa grande** (ex: o importador, o serviço de auth).
 - **ADR (Architecture Decision Record)** — registra **uma decisão**: contexto, escolha, consequências. Curto, imutável. **Só quando há bifurcação real** com trade-off.
 - **Spec** — a especificação **detalhada e executável por agente** de uma feature (requisitos + critérios de aceite em **EARS** + design + contratos + restrições/NFRs). É a **fonte da verdade** do SDD, **centralizada e viva** (o Claude Code a consome ao implementar). **Uma Spec por Story.**
@@ -33,7 +33,7 @@ A spec é o artefato canônico; código, testes e docs são gerados a partir del
 4. Revisão e merge (squash; ver `estrategia-branch-pr.md`).
 5. Verify contra a Spec; atualiza docs/CLAUDE.md só se a implementação mudou alguma decisão.
 
-Board: Backlog → Pronto → Em andamento → Em revisão → Concluído. **Story/Task** = o card que anda no board; **Subtask** = sub-issue sob a Story, que também anda no board e tem **assignee** — o quem-fez-o-quê sai do assignee, não de garimpar commit/PR. Status compartilhado + views filtradas (limitação do GitHub vs. Jira). "Pronto" = a Story tem objetivo + critério de aceite e Spec escrita. "Concluído" = PR mergeado + testes passando + docs atualizados se preciso.
+Board: Backlog → Ready For Start → In Progress → In Review → Done. **Story/Task** = o card que anda no board; **Subtask** = sub-issue sob a Story, que também anda no board e tem **assignee** — o quem-fez-o-quê sai do assignee, não de garimpar commit/PR. Status compartilhado + views filtradas (limitação do GitHub vs. Jira). "Pronto" = a Story tem objetivo + critério de aceite e Spec escrita. "Concluído" = PR mergeado + testes passando + docs atualizados se preciso.
 
 ## Testes (decisão consciente: não é TDD clássico)
 

@@ -49,7 +49,7 @@ Três camadas, complementares (não duplicam):
 - **Spec → seção Modelo de dados** — o **delta** daquela feature + o mecanismo (índice, upsert por chave natural, etc.).
 - **`docs/data-model/`** — o **mapa conceitual** consolidado: entidades, significado dos campos (ex.: "valor negativo = estorno"), relações e invariantes transversais (ex.: "agregados sempre calculados, nunca armazenados").
 
-Regra: o `data-model/` é **conceitual/semântico** — não é cópia coluna-a-coluna do DDL (isso divergiria do código e viraria mentira). É doc vivo, semeado na primeira feature que cria entidades (R0/R1) e atualizado como parte do "docs atualizados" da definição de Concluído.
+Regra: o `data-model/` é **conceitual/semântico** — não é cópia coluna-a-coluna do DDL (isso divergiria do código e viraria mentira). É doc vivo, semeado na primeira feature que cria entidades (R0/R1) e atualizado como parte do "docs atualizados" da Definition of Done.
 
 ## Docs de estratégia/processo (não são ADR/RFC/Spec)
 

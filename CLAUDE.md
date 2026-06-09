@@ -23,8 +23,9 @@ Este é o CLAUDE.md **raiz** — regras compartilhadas pelo monorepo inteiro. Ca
 ```
 api/                 # core Python (FastAPI) — tem seu próprio CLAUDE.md
 web/                 # front React — tem seu próprio CLAUDE.md
-docs/                # documentação (PT-BR): roadmaps, processo, modelo de dados,
-                     #   adr/, rfc/, specs/, epicos/, templates/, prompts/
+docs/                # documentação (PT-BR):
+                     #   roadmaps/, process/, data-model/, adr/, rfc/,
+                     #   specs/, epicos/, templates/, prompts/
 .github/workflows/   # pipelines de CI (uma por subprojeto, com filtro de caminho)
 CLAUDE.md            # este arquivo (regras compartilhadas)
 ```

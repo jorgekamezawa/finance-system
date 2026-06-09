@@ -33,7 +33,7 @@ A spec é o artefato canônico; código, testes e docs são gerados a partir del
 4. Revisão e merge (squash; ver `estrategia-branch-pr.md`).
 5. Verify contra a Spec; atualiza docs/CLAUDE.md só se a implementação mudou alguma decisão.
 
-Board: Backlog → Ready For Start → In Progress → In Review → Done. **Story/Task** = o card que anda no board; **Subtask** = sub-issue sob a Story, que também anda no board e tem **assignee** — o quem-fez-o-quê sai do assignee, não de garimpar commit/PR. Status compartilhado + views filtradas (limitação do GitHub vs. Jira). "Pronto" = a Story tem objetivo + critério de aceite e Spec escrita. "Concluído" = PR mergeado + testes passando + docs atualizados se preciso.
+Board: Backlog → Ready To Start → In Progress → In Review → Done. **Story/Task** = o card que anda no board; **Subtask** = sub-issue sob a Story, que também anda no board e tem **assignee** — o quem-fez-o-quê sai do assignee, não de garimpar commit/PR. Status compartilhado + views filtradas (limitação do GitHub vs. Jira). "Ready To Start" = a Story tem objetivo + critério de aceite e Spec escrita. "Done" = PR mergeado + testes passando + docs atualizados se preciso.
 
 ## Testes (decisão consciente: não é TDD clássico)
 

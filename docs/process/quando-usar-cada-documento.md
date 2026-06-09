@@ -27,13 +27,15 @@ construível ("o dev só implementa") é responsabilidade da **Spec**, não do A
 
 ## Perguntas-pavio (quando bater dúvida)
 
-1. É uma escolha com alternativa real que vou querer justificar em 6 meses? → **ADR**.
-2. Estou propondo construir algo grande e quero feedback/alinhar antes? → **RFC**.
-3. Vou construir uma feature e preciso do plano + critérios de aceite? → **Spec**.
-4. É uma escolha pequena de resposta fácil? → não força documento.
+1. Vou planejar um release e fixar a intenção antes de quebrar em Stories? → **Épico**.
+2. É uma escolha com alternativa real que vou querer justificar em 6 meses? → **ADR**.
+3. Estou propondo construir algo grande e quero feedback/alinhar antes? → **RFC**.
+4. Vou construir uma feature e preciso do plano + critérios de aceite? → **Spec**.
+5. É uma escolha pequena de resposta fácil? → não força documento.
 
 ## Exemplos (deste projeto)
 
+- Planejar o R0 (a intenção do release: problema, usuário, métrica) → **Épico**.
 - Criar o sistema de finanças → **RFC** (RFC-0001).
 - Core em Python/FastAPI; React no front; monorepo → **ADR** (0001, 0002, 0003).
 - Importar histórico da planilha (R3) → **RFC** → pare ADRs (idempotência, mapeamento).

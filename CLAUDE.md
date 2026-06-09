@@ -24,7 +24,7 @@ Este é o CLAUDE.md **raiz** — regras compartilhadas pelo monorepo inteiro. Ca
 api/                 # core Python (FastAPI) — tem seu próprio CLAUDE.md
 web/                 # front React — tem seu próprio CLAUDE.md
 docs/                # documentação (PT-BR): roadmaps, processo, modelo de dados,
-                     #   adr/, rfc/, specs/, templates/, prompts/
+                     #   adr/, rfc/, specs/, epicos/, templates/, prompts/
 .github/workflows/   # pipelines de CI (uma por subprojeto, com filtro de caminho)
 CLAUDE.md            # este arquivo (regras compartilhadas)
 ```
@@ -39,6 +39,16 @@ O autor está aprendendo Python e React. Ao implementar ou alterar código:
 - Aponte o que é idiomático e o que é trade-off.
 - De vez em quando, faça uma pergunta de verificação pra confirmar que o autor entendeu.
 
+## Princípios de código (todo o monorepo)
+
+- **Clean Code acima de tudo: legibilidade primeiro.** O código é escrito pra outro humano ler, não só pra máquina rodar — como diz Martin Fowler, qualquer um escreve código que a máquina entende; o difícil é escrever código que outro humano entenda. **Norte:** se uma pessoa de negócio lê os nomes dos métodos em sequência, ela entende o que o sistema faz.
+- **Nomes que se explicam.** Método, função e variável dizem o que fazem e por quê; nada de abreviação enigmática. O nome carrega a intenção.
+- **Comentários só quando necessário** (postura do Clean Code). Comentário é sinal de que o código não conseguiu se explicar — "Comments are always failures" (Robert C. Martin, *Clean Code*). Não comente código ruim: reescreva-o. Prefira extrair um método com nome bom a explicar um trecho com comentário. O comentário legítimo é o raro: o *porquê* não-óbvio (uma decisão, um workaround, uma restrição externa), nunca o *o quê* — isso o próprio código tem que dizer.
+- **SOLID** vale pra todo código. A aplicação concreta (em Python no `api/`, nos componentes no `web/`) fica em cada subprojeto.
+- **YAGNI — construa só o necessário pra feature de agora.** Não antecipe. Ex.: ao criar um repository de acesso ao banco, crie **só os métodos que a feature atual usa**, não o conjunto que você imagina que será útil. Isso vale pra tudo — endpoints, componentes, abstrações, config: nada "pro futuro" sem demanda real agora.
+
+Arquitetura detalhada (Clean Architecture, DDD) fica no `api/CLAUDE.md`; os idiomas do front (React) ficam no `web/CLAUDE.md` — porque boa prática num não é necessariamente boa prática no outro.
+
 ## Testes
 
 - Não fazemos TDD clássico. Os testes são **derivados da Spec** (unitários + integração) e devem passar antes do merge.
@@ -47,13 +57,14 @@ O autor está aprendendo Python e React. Ao implementar ou alterar código:
 ## Processo
 
 - Seguimos SDD: Spec → Tasks → Implement → Verify. Ver `docs/process/processo-desenvolvimento-sdd.md`.
-- Em dúvida sobre qual documento criar (ADR, RFC, Spec), ver `docs/process/quando-usar-cada-documento.md`.
+- Em dúvida sobre qual documento criar (ADR, RFC, Spec, data-model), ver `docs/process/quando-usar-cada-documento.md`.
+- Branch, PR, deploy e ambientes: `docs/process/estrategia-branch-pr.md`. Testes de integração com terceiros: `docs/process/estrategia-testes-integracao.md`. Feature flags: `docs/process/estrategia-feature-flags.md`.
 - Toda feature tem Spec; ADR só pra decisão com bifurcação real; RFC só pra feature grande.
-- Antes de codar uma feature, gere/atualize a Spec e quebre em tasks; use plan mode.
+- Antes de codar uma feature, gere/atualize a Spec; a partir dela, decomponha em Story + subtasks (você aprova); use plan mode.
 
 ## Convenções
 
-- Toda branch referencia uma issue do board.
+- Toda branch **de código** referencia a issue que implementa (normalmente uma subtask). Fluxo completo em `docs/process/estrategia-branch-pr.md`.
 - Commits pequenos e descritivos (Conventional Commits).
 - **Documentação em markdown: um parágrafo por linha.** Não quebre o parágrafo no meio com quebra manual — alguns renderizadores (GitHub em comentários, Obsidian) tratam a quebra simples como quebra real e o texto fica torto. Uma linha por parágrafo reflui certo em qualquer lugar.
 - Rode os testes antes de declarar uma tarefa concluída.

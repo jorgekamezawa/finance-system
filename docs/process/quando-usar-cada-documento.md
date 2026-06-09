@@ -18,6 +18,7 @@ Regra da pirâmide: **muitas Specs, alguns ADRs, poucas RFCs.**
 
 - Uma **RFC** discute uma iniciativa grande e **pare ADRs** (as bifurcações viram registros).
 - Uma **Spec** consome ADRs/RFC como restrições já fixadas e detalha a construção da feature.
+  Seus critérios de aceite são escritos em **EARS**.
 - O fluxo: Épico/roadmap → (RFC, se grande) → ADRs das decisões → Spec → Tasks → Implement → Verify.
 
 Observação importante: o ADR registra o **porquê + a forma arquitetural** de uma decisão; o plano
@@ -38,6 +39,20 @@ construível ("o dev só implementa") é responsabilidade da **Spec**, não do A
 - Serviço de auth próprio (R8) → **RFC** → pare ADRs (sessão no Redis, formato de token).
 - "Agregados sempre calculados, nunca armazenados" → **ADR** (decisão de modelagem).
 - CRUD de transações (R1) → **Spec** (feature, sem bifurcação).
+
+## Onde mora a informação de modelo de dados
+
+Três camadas, complementares (não duplicam):
+
+- **Código (migrations + models)** — o schema autoritativo. É a verdade final.
+- **Spec → seção Modelo de dados** — o **delta** daquela feature + o mecanismo (índice, upsert por chave natural, etc.).
+- **`docs/data-model/`** — o **mapa conceitual** consolidado: entidades, significado dos campos (ex.: "valor negativo = estorno"), relações e invariantes transversais (ex.: "agregados sempre calculados, nunca armazenados").
+
+Regra: o `data-model/` é **conceitual/semântico** — não é cópia coluna-a-coluna do DDL (isso divergiria do código e viraria mentira). É doc vivo, semeado na primeira feature que cria entidades (R0/R1) e atualizado como parte do "docs atualizados" da definição de Concluído.
+
+## Docs de estratégia/processo (não são ADR/RFC/Spec)
+
+Como a gente trabalha — branch/PR/deploy, testes de integração, feature flags — mora em docs de processo próprios e duráveis, **não** em ADRs: `estrategia-branch-pr.md`, `estrategia-testes-integracao.md`, `estrategia-feature-flags.md` (em `docs/process/`). Uma decisão pontual com bifurcação dentro de um desses temas ainda pode virar ADR; o doc de estratégia descreve o "como", o ADR registra um "porquê" específico.
 
 ## Anti-padrões a evitar
 

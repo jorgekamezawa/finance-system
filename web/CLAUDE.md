@@ -32,6 +32,18 @@ O front do Sistema de Finanças: SPA em **React** (básico; "backend-heavy fulls
 - **ESLint** ≈ Checkstyle / PMD / detekt (lint); **Prettier** ≈ formatter (spotless / ktlint format).
 - ⚠️ **Sem paralelo limpo:** o modelo de **componentes** e **hooks** (`useState`, `useEffect`) do React não tem equivalente direto no backend Java/Spring — é um modelo novo. Explique do zero quando ele aparecer.
 
+## Idiomas do React (siga estes)
+
+> Não impomos Clean Architecture nem DDD tático do back-end aqui — o front segue os idiomas do React; forçar camadas/agregados estilo back-end no React é não-idiomático e atrapalha. (Fonte: react.dev.)
+
+- **Componentes puros.** Um componente é uma função pura das suas entradas: mesmas props/state/context → mesmo JSX, **sem efeito colateral durante o render** (nada de chamada de API, mutação de variável externa ou DOM no corpo do componente). Efeito vai em event handler ou em `Effect`. É regra do próprio React — é ela que permite ao React re-renderizar com segurança.
+- **Você provavelmente não precisa de `useEffect`.** `Effect` é uma saída de emergência pra sincronizar com um sistema **externo** (rede, DOM não-React, widget de terceiro). Pra derivar um valor a partir de props/state, **calcule durante o render** (ou `useMemo` se for caro) — não use Effect. Effect desnecessário deixa o código mais difícil de seguir, mais lento e mais propenso a bug. (É o tropeço nº 1 de quem começa.)
+- **Composição sobre herança.** Reuso no React é por composição — componentes dentro de componentes, `children`, props —, não por herança de classe.
+- **Fluxo de dados unidirecional.** Estado desce por props; mudança sobe por callback. Quando dois componentes precisam do mesmo estado, **suba o estado** (lift state up) pro ancestral comum.
+- **Uma responsabilidade por componente.** Componente que faz coisa demais se quebra em menores — é o SRP da raiz aplicado a componente.
+- **Custom hooks pra lógica com estado reutilizável.** Lógica que se repete ou que polui o componente sai pra um hook `useAlgo()`; o componente fica focado no que renderiza.
+- **Colocation.** Mantenha junto o que muda junto: estado perto de onde é usado, e arquivos organizados por **feature**, não por tipo técnico.
+
 ## Notas
 
 - Front é **básico** de propósito. Bibliotecas de **roteamento, estado ou data-fetching** (ex.: React Router, TanStack Query) entram só quando uma feature pedir — não pré-instale.

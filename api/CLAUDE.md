@@ -26,6 +26,32 @@ O core do Sistema de Finanças: API em **FastAPI** sobre **Postgres**. Este arqu
 - Migrations (a partir do Nível 1): `uv run alembic upgrade head` / `uv run alembic revision --autogenerate -m "..."`
 - Stack local (app + Postgres): `docker compose up` (lê o `compose.yaml` desta pasta)
 
+## Arquitetura & princípios (back-end)
+
+Os princípios gerais (Clean Code, SOLID, YAGNI, comentários) estão na raiz; abaixo, a aplicação no back-end.
+
+### Clean Architecture
+
+- Camadas com a **regra da dependência apontando pra dentro**: o domínio (entidades, regras de negócio) não conhece framework, banco nem HTTP; as camadas de fora (FastAPI, Postgres, integrações) dependem do domínio, nunca o contrário.
+- **Framework nas bordas.** FastAPI, driver/ORM e integrações ficam na borda (adapters). O caso de uso não importa `fastapi` nem sabe que existe HTTP.
+- **Schemas Pydantic são DTOs de borda** (entrada/saída da API), não as entidades de domínio — mantenha os dois separados.
+- Fluxo típico: rota (FastAPI) → caso de uso (aplicação) → domínio; acesso a dados por uma **abstração (repository)** que o domínio define e a borda implementa.
+- É a direção, não cerimônia: num app pequeno as camadas podem ser leves — o que não pode é o domínio depender da borda.
+
+### DDD (na medida certa)
+
+- **Linguagem ubíqua:** o código usa os termos do domínio — transação, categoria, meta de gasto, receita, agregado — iguais aos do negócio e dos roadmaps. O nome no código é o nome que você usaria explicando pra alguém.
+- **Táticos onde se pagam:** entidades, value objects (ex.: valor/dinheiro) e agregados quando agregam clareza — **sem over-engineering**. É um app single-user pequeno: não monte uma hierarquia DDD cerimoniosa onde uma função simples resolve. Comece simples; promova a value object/aggregate quando a regra justificar.
+
+### SOLID (aplicação no back-end)
+
+- **SRP:** cada módulo/classe/função com uma só razão de mudar.
+- **DIP:** dependa de abstração — um `Protocol` (ou ABC) pro repository/serviço externo —, não da implementação concreta. É o que mantém o domínio puro e os testes fáceis (injeta um fake). (Paralelo com Kotlin no fim deste doc.)
+
+### YAGNI, concreto
+
+- Repository: crie **só os métodos que a feature atual chama** (`add`, `get_by_id`…), não um CRUD completo "porque vai precisar". Mesma regra pra serviços, casos de uso e endpoints.
+
 ## Modo professor — paralelos úteis (Python ⇄ Kotlin/Java)
 
 - `pyproject.toml` + `uv` ≈ `build.gradle` + Gradle (declarar deps, resolver, isolar ambiente, travar versões).
@@ -33,6 +59,7 @@ O core do Sistema de Finanças: API em **FastAPI** sobre **Postgres**. Este arqu
 - `pytest` ≈ JUnit; `pytest-cov` ≈ JaCoCo.
 - `mypy` / `pyright` ≈ a checagem de tipos que o compilador Kotlin/Java te dá de graça (em Python os type hints são opcionais; essas ferramentas é que os fazem valer).
 - **Alembic** ≈ Flyway / Liquibase (migrations versionadas e reversíveis).
+- `Protocol`/ABC ≈ `interface` do Kotlin (base do DIP); injeção via construtor ≈ Spring, só que sem o container mágico (você passa a dependência você mesmo).
 
 ## Notas
 

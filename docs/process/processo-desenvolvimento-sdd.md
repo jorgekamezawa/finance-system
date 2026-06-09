@@ -10,7 +10,7 @@ Documento de referência do projeto **Sistema de Finanças**. Define como a gent
 
 ## A pirâmide de documentos (o que é cada um)
 
-- **PRD / Épico** — o *porquê* e o *o quê* no nível de produto (problema, usuário, resultado, métrica). Não técnico. No projeto solo, equivale a um *release* e quem veste o chapéu de PM é o Project. É um **documento** (mora em `docs/epicos/`), **fora do board**; um prefixo numérico liga os cards do release ao épico. **Todo release tem.**
+- **Épico** — o *porquê* e o *o quê* no nível de produto (problema, usuário, resultado, métrica). Não técnico. Funde dois papéis: o de **Épico** (agrupador das Stories do release) e o de **PRD** (a intenção); como o agrupamento no board já é feito pelo release + prefixo numérico, o documento carrega só a intenção — um **PRD enxuto**. No projeto solo equivale a um *release* e quem veste o chapéu de PM é o Project. É um **documento** (mora em `docs/epicos/`), **fora do board**. **Todo release tem.** (O detalhe dos dois papéis mora em `quando-usar-cada-documento.md`.)
 - **RFC (Request for Comments)** — proposta de solução pra uma feature parruda/arriscada, pra discutir o desenho antes de comprometer. Costuma *parir* ADRs. **Só pra coisa grande** (ex: o importador, o serviço de auth).
 - **ADR (Architecture Decision Record)** — registra **uma decisão**: contexto, escolha, consequências. Curto, imutável. **Só quando há bifurcação real** com trade-off.
 - **Spec** — a especificação **detalhada e executável por agente** de uma feature (requisitos + critérios de aceite em **EARS** + design + contratos + restrições/NFRs). É a **fonte da verdade** do SDD, **centralizada e viva** (o Claude Code a consome ao implementar). **Uma Spec por Story.**
@@ -21,13 +21,13 @@ Regra da pirâmide: **muitas Specs, alguns ADRs, poucas RFCs.** Não force docum
 
 ## O fluxo (Spec-Driven Development)
 
-> Épico/PRD (intenção) → RFC + ADRs (decisões macro) → **commit dos docs macro** → Claude Code **planeja o release** (propõe as Stories; você aprova) → cria as cascas de Story no board → você escolhe a Story e escreve a **Spec** (uma por Story, just-in-time) → **commit da Spec** → Claude Code **ajusta a descrição da Story e cria as subtasks** (você aprova) → Implement (Claude Code, por subtask) → **Verify** (você, contra a Spec) → docs/CLAUDE.md atualizados.
+> Épico (intenção) → RFC + ADRs (decisões macro) → **commit dos docs macro** → Claude Code **planeja o release** (propõe as Stories; você aprova) → cria as cascas de Story no board → você escolhe a Story e escreve a **Spec** (uma por Story, just-in-time) → **commit da Spec** → Claude Code **ajusta a descrição da Story e cria as subtasks** (você aprova) → Implement (Claude Code, por subtask) → **Verify** (você, contra a Spec) → docs/CLAUDE.md atualizados.
 
 A spec é o artefato canônico; código, testes e docs são gerados a partir dela. O passo que mais importa é o **Verify**: conferir o output contra a Spec. Uma Spec por Story; o card do board carrega só **resumo + link** pra Spec (o link é só na direção card → Spec). Ferramenta é secundária — markdown + agente já bastam (GitHub Spec Kit é a instância portátil, opcional).
 
 ## Cadência por release
 
-1. Épico/PRD do release + decisão fininha (ADR só se houver bifurcação); commit dos docs macro.
+1. Épico do release + decisão fininha (ADR só se houver bifurcação); commit dos docs macro.
 2. Claude Code planeja o release e cria as Stories no board (você aprova). O Épico fica **fora do board**; o prefixo numérico liga os cards a ele.
 3. Por Story: você escreve a Spec → Claude Code decompõe em subtasks (você aprova) → constrói por subtask (plan mode → código → testes → PR).
 4. Revisão e merge (squash; ver `estrategia-branch-pr.md`).
@@ -56,14 +56,14 @@ Board: Backlog → Pronto → Em andamento → Em revisão → Concluído. **Sto
 **Repositório (GitHub) — fonte canônica:**
 - `CLAUDE.md` (raiz) — regras/decisões/modo-professor, pro Claude Code.
 - `docs/roadmaps/` — os dois roadmaps. `docs/process/` — este documento, `quando-usar-cada-documento.md` e as estratégias (`estrategia-branch-pr.md`, `estrategia-testes-integracao.md`, `estrategia-feature-flags.md`). `docs/data-model/` — modelo de dados (conceitual).
-- `docs/epicos/` — os épicos/PRDs por release. `docs/adr/`, `docs/rfc/`, `docs/specs/` — os documentos reais.
+- `docs/epicos/` — os épicos por release. `docs/adr/`, `docs/rfc/`, `docs/specs/` — os documentos reais.
 - `docs/templates/` — esqueletos (ADR/RFC/Spec/Épico). `docs/prompts/` — starter prompts (um arquivo por prompt).
 
 **Convenção de nomes:**
 - ADR: `docs/adr/ADR-NNNN-slug.md` (NNNN monotônico, nunca reutilizado).
 - RFC: `docs/rfc/RFC-NNNN-slug.md`.
 - Spec: `docs/specs/<release>-<slug>.md` (ex.: `r1-crud-transacoes.md`; pode incluir o número da issue: `r1-123-crud-transacoes.md`).
-- Épico/PRD: `docs/epicos/<release>-<slug>.md`.
+- Épico: `docs/epicos/<release>-<slug>.md`.
 - data-model: docs vivos por entidade em `docs/data-model/`, sem numeração.
 
 **Project (Claude.ai):**

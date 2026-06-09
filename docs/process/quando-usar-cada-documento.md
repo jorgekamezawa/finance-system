@@ -5,6 +5,7 @@ Regra da pirâmide: **muitas Specs, alguns ADRs, poucas RFCs.**
 
 ## A regra mental
 
+- **Épico** → vou **planejar um release** e quero fixar a intenção antes de quebrar em Stories. Responde "por que este release existe e como sei que entreguei?". É um documento que **funde dois papéis**: o do **Épico** clássico (o agrupador — dizer que um conjunto de Stories relacionadas forma este release) e o do **PRD** (a intenção de produto — problema, usuário, resultado, métrica, escopo). Fazem sentido juntos porque, no projeto solo, os dois acontecem no mesmo escopo e ao mesmo tempo: um release. E como o agrupamento das Stories no board já é feito pelo release + prefixo numérico, o documento não precisa rastrear nada — carrega **só a intenção**, ou seja, o conteúdo de um **PRD enxuto**. Um por release; todos têm. Mora em `docs/epicos/`. (Poucos, como as RFCs.)
 - **RFC** → vou **construir algo grande/arriscado** e quero pensar/alinhar **antes** de codar.
   Responde "devemos fazer isso, e como, no geral?". Ampla e pra frente. (Poucas.)
 - **ADR** → tomei **uma decisão com bifurcação real** e quero lembrar o **porquê** depois.

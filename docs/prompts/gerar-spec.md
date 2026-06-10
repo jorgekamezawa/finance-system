@@ -8,4 +8,5 @@ Critérios de aceite em EARS, com a tabela de exemplos. Inclua contratos, o toqu
 Referencie ADRs/RFCs como restrições já dadas, sem re-justificar.
 NÃO inclua quebra em tasks — a Spec não tem essa seção; a decomposição é do Claude Code.
 Alinhe comigo o que estiver ambíguo antes de escrever.
+Enxuto: referencie o roadmap em vez de enumerar releases/features específicas; corte padding, não substância.
 ```

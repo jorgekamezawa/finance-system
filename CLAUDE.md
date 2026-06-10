@@ -65,7 +65,7 @@ Arquitetura detalhada (Clean Architecture, DDD) fica no `api/CLAUDE.md`; os idio
 
 - Toda branch **de código** referencia a issue que implementa (normalmente uma subtask). Fluxo completo em `docs/process/estrategia-branch-pr.md`.
 - Commits pequenos e descritivos (Conventional Commits).
-- **Documentação enxuta por padrão.** Em todo doc (RFC, ADR, Spec, Épico): só o necessário pra alguém avaliar e decidir; referencie outros docs em vez de reexplicar; sem prolixidade. Extensão é exceção que o conteúdo justifica, não o normal.
+- **Documentação enxuta por padrão.** Em todo doc (RFC/ADR/Spec/Épico): só o necessário pra avaliar e decidir; referencie em vez de reexplicar. O doc se sustenta na própria decisão — cite o roadmap por referência, não enumere releases/features que a decisão não exige (ex.: "features de IA", não "R4/R5/R6"); Resumo e Contexto curtos, com prós/contras só nas alternativas. Extensão é exceção que o conteúdo justifica.
 - **Documentação em markdown: um parágrafo por linha.** Não quebre o parágrafo no meio com quebra manual — alguns renderizadores (GitHub em comentários, Obsidian) tratam a quebra simples como quebra real e o texto fica torto. Uma linha por parágrafo reflui certo em qualquer lugar.
 - Rode os testes antes de declarar uma tarefa concluída.
 - README e ADRs atualizados quando a decisão muda.

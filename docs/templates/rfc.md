@@ -4,6 +4,8 @@
 - **Autor:**
 - **Data:** AAAA-MM-DD
 
+Princípio: enxuta e honesta. Existe pra alguém revisar e aprovar — se dá preguiça de ler, falhou. Escreva só o necessário pra avaliar e decidir (a decisão, as alternativas reais, os riscos); referencie outros docs em vez de reexplicá-los. Dê o cheiro do futuro (que o core cresce), mas não crave implementação especulativa: nomeie o seam, não a tech/topologia/release do que ainda não foi decidido — o incerto vira ponteiro pra RFC/ADR futura.
+
 ## Resumo
 
 Um parágrafo: o que é e por que agora.
@@ -15,6 +17,7 @@ Problema que resolve, quem se beneficia, o que acontece se não fizermos.
 ## Design proposto
 
 A solução macro: componentes, fluxo, contratos entre serviços, modelo de dados afetado.
+
 
 ## Alternativas
 

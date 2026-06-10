@@ -10,13 +10,11 @@ Este é o CLAUDE.md **raiz** — regras compartilhadas pelo monorepo inteiro. Ca
 - **Português apenas em:** a documentação (`docs/`) e a conversa com o autor.
 - Commits seguem **Conventional Commits** em inglês (`feat:`, `fix:`, `chore:`, `docs:`, `test:`, `refactor:`…).
 
-## Arquitetura (decisões fechadas)
+## Arquitetura
 
-- **Monorepo.** `api/` = core em **Python (FastAPI)** + **Postgres**. `web/` = front em **React** (básico; "backend-heavy fullstack").
-- **Kotlin** fica reservado pro futuro **serviço de autenticação/sessão** (release R8) e virá num **repositório separado**, não neste monorepo.
-- Arquitetura event-driven (mensageria) entra mais tarde, não no início.
-- v1 é **single-user, sem auth real** (auth gerenciado até o R8).
-- Detalhes de stack, ferramentas e comandos de cada parte ficam em `api/CLAUDE.md` e `web/CLAUDE.md`, não aqui.
+- **Monorepo:** `api/` = core em **Python (FastAPI)** + **Postgres**; `web/` = front em **React** (básico; "backend-heavy fullstack"). Detalhes de stack, ferramentas e comandos de cada parte ficam em `api/CLAUDE.md` e `web/CLAUDE.md`, não aqui.
+- **v1 é single-user, sem auth real:** não construa autenticação até uma feature exigir.
+- As **decisões** de arquitetura e o porquê de cada uma moram nos **ADRs** (`docs/adr/`); a **direção** de evolução, nos **roadmaps** (`docs/roadmaps/`). Não crave futuro especulativo aqui — referencie.
 
 ## Estrutura do repositório
 
@@ -67,6 +65,7 @@ Arquitetura detalhada (Clean Architecture, DDD) fica no `api/CLAUDE.md`; os idio
 
 - Toda branch **de código** referencia a issue que implementa (normalmente uma subtask). Fluxo completo em `docs/process/estrategia-branch-pr.md`.
 - Commits pequenos e descritivos (Conventional Commits).
+- **Documentação enxuta por padrão.** Em todo doc (RFC, ADR, Spec, Épico): só o necessário pra alguém avaliar e decidir; referencie outros docs em vez de reexplicar; sem prolixidade. Extensão é exceção que o conteúdo justifica, não o normal.
 - **Documentação em markdown: um parágrafo por linha.** Não quebre o parágrafo no meio com quebra manual — alguns renderizadores (GitHub em comentários, Obsidian) tratam a quebra simples como quebra real e o texto fica torto. Uma linha por parágrafo reflui certo em qualquer lugar.
 - Rode os testes antes de declarar uma tarefa concluída.
 - README e ADRs atualizados quando a decisão muda.

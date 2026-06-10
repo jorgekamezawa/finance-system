@@ -10,4 +10,5 @@ Escopo em bullets de uma linha; o detalhe de cada Story mora na Spec, não aqui.
 Referencie RFCs/ADRs relacionados como restrições já decididas, sem re-justificar.
 NÃO liste subtasks nem rastreie status — o Épico não é artefato de board (o agrupamento das Stories é via release + prefixo numérico).
 Alinhe comigo o que estiver ambíguo antes de escrever.
+Enxuto: referencie o roadmap em vez de enumerar releases/features específicas; corte padding, não substância.
 ```

@@ -1,6 +1,7 @@
 # ADR-NNNN: [Título curto da decisão]
 
 - **Status:** Proposto | Aceito | Depreciado | Substituído por ADR-NNNN
+- **Autor:**
 - **Data:** AAAA-MM-DD
 
 ## Resumo (Y-statement)

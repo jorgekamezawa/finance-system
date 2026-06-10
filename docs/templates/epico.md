@@ -4,6 +4,7 @@
 
 - **Status:** Rascunho | Ativo | Entregue
 - **Release:** [R0, R1, ...]
+- **Autor:**
 - **Data:** AAAA-MM-DD
 
 ## Resumo

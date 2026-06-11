@@ -14,7 +14,7 @@ Este é o CLAUDE.md **raiz** — regras compartilhadas pelo monorepo inteiro. Ca
 
 - **Monorepo:** `api/` = core em **Python (FastAPI)** + **Postgres**; `web/` = front em **React** (básico; "backend-heavy fullstack"). Detalhes de stack, ferramentas e comandos de cada parte ficam em `api/CLAUDE.md` e `web/CLAUDE.md`, não aqui.
 - **v1 é single-user, sem auth real:** não construa autenticação até uma feature exigir.
-- As **decisões** de arquitetura e o porquê de cada uma moram nos **ADRs** (`docs/adr/`); a **direção** de evolução, nos **roadmaps** (`docs/roadmaps/`). Não crave futuro especulativo aqui — referencie.
+- As **decisões** de arquitetura e o porquê de cada uma moram nos **ADRs** (`docs/adr/`); a **direção** de evolução é esboçada nos **roadmaps** (`docs/roadmaps/`), que são rascunhos de planejamento (não-oficiais, mutáveis) — a intenção oficial de cada release vira **Épico**, e Épico/RFC/ADR/Spec podem repetir conteúdo do roadmap à vontade. Não crave futuro especulativo aqui — referencie.
 
 ## Estrutura do repositório
 
@@ -65,7 +65,7 @@ Arquitetura detalhada (Clean Architecture, DDD) fica no `api/CLAUDE.md`; os idio
 
 - Toda branch **de código** referencia a issue que implementa (normalmente uma subtask). Fluxo completo em `docs/process/estrategia-branch-pr.md`.
 - Commits pequenos e descritivos (Conventional Commits).
-- **Documentação enxuta por padrão.** Em todo doc (RFC/ADR/Spec/Épico): só o necessário pra avaliar e decidir; referencie em vez de reexplicar. O doc se sustenta na própria decisão — cite o roadmap por referência, não enumere releases/features que a decisão não exige (ex.: "features de IA", não "R4/R5/R6"); Resumo e Contexto curtos, com prós/contras só nas alternativas. Extensão é exceção que o conteúdo justifica.
+- **Documentação enxuta por padrão.** Em todo doc (RFC/ADR/Spec/Épico): só o necessário pra avaliar e decidir; referencie outros docs oficiais (Épico/RFC/ADR/Spec) em vez de reexplicá-los. O doc se sustenta na própria decisão — não crave futuro especulativo nem enumere releases/features que a decisão não exige (ex.: "features de IA", não "R4/R5/R6"); Resumo e Contexto curtos, com prós/contras só nas alternativas. Extensão é exceção que o conteúdo justifica.
 - **Documentação em markdown: um parágrafo por linha.** Não quebre o parágrafo no meio com quebra manual — alguns renderizadores (GitHub em comentários, Obsidian) tratam a quebra simples como quebra real e o texto fica torto. Uma linha por parágrafo reflui certo em qualquer lugar.
 - Rode os testes antes de declarar uma tarefa concluída.
 - README e ADRs atualizados quando a decisão muda.

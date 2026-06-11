@@ -33,7 +33,7 @@ Decisões que valem **agora** (cada uma com seu registro):
 - **Single-user, sem auth real no v1** (premissa): proteção mínima; auth de verdade quando uma feature exigir, em RFC/ADR própria.
 - **Agregados sempre calculados, nunca armazenados** (invariante de modelagem): vira ADR quando o modelo de dados nascer, no R1.
 
-A sequência de releases vive em `docs/roadmaps/roadmap-features-sistema.md` e a evolução de infra/deploy em `docs/roadmaps/roadmap-infra-devops.md` (o v1 nasce no Nível 0). Esta RFC não os duplica.
+A sequência de releases vive em `docs/roadmaps/roadmap-features-sistema.md` e a evolução de infra/deploy em `docs/roadmaps/roadmap-infra-devops.md` (o v1 nasce no Nível 0).
 
 ## Alternativas
 

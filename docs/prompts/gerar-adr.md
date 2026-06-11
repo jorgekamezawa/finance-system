@@ -7,5 +7,5 @@ Pela lente de Tech Lead, escreva um ADR usando o template docs/templates/adr.md 
 Contexto/forças em jogo: [CONTEXTO].
 Liste pelo menos duas alternativas reais com prós/contras, a decisão em voz ativa, o Y-statement no topo, e as consequências (+ / − / ~). Seja conciso.
 Se faltar contexto pra decidir bem, me pergunte antes de escrever.
-Enxuto: referencie o roadmap em vez de enumerar releases/features específicas; corte padding, não substância.
+Enxuto: corte padding, não substância; não enumerereleases/features específicas.
 ```

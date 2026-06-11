@@ -1,6 +1,6 @@
 # Épico <Release>: [Título do release]
 
-> Documento de topo de um release. Funde dois papéis: o do **Épico** (o agrupador — dizer que um conjunto de Stories relacionadas forma este release) e o do **PRD** (a intenção de produto — problema, usuário, resultado, métrica, escopo). No nosso fluxo o agrupamento das Stories no board é feito pelo release + prefixo numérico, então este arquivo **não rastreia nada**: carrega só a intenção, ou seja, o conteúdo de um **PRD enxuto**. Não duplica o roadmap — **expande** a entrada deste release. Ver `docs/process/quando-usar-cada-documento.md`.
+> Documento de topo de um release. Funde dois papéis: o do **Épico** (o agrupador — dizer que um conjunto de Stories relacionadas forma este release) e o do **PRD** (a intenção de produto — problema, usuário, resultado, métrica, escopo). No nosso fluxo o agrupamento das Stories no board é feito pelo release + prefixo numérico, então este arquivo **não rastreia nada**: carrega só a intenção, ou seja, o conteúdo de um **PRD enxuto**. Ver `docs/process/quando-usar-cada-documento.md`.
 
 - **Status:** Rascunho | Ativo | Entregue
 - **Release:** [R0, R1, ...]
@@ -33,14 +33,14 @@ Como você sabe que o release deu certo. Pode ser qualitativo num projeto solo (
 
 ## Escopo (alto nível)
 
-As capacidades/Stories que entram, em bullets de uma linha — a visão de guarda-chuva do release. **Alto nível**: o detalhe de cada uma mora na Spec da Story, não aqui. Não reescreva o roadmap; expanda-o.
+As capacidades/Stories que entram, em bullets de uma linha — a visão de guarda-chuva do release. **Alto nível**: o detalhe de cada uma mora na Spec da Story, não aqui.
 
 - [capacidade / Story]
 - [capacidade / Story]
 
 ## Fora de escopo
 
-O que explicitamente NÃO entra neste release, pra cortar ambiguidade. Se algo foi considerado e adiado, diga pra onde foi (release futuro, RFC, "Norte de longo prazo").
+O que explicitamente NÃO entra neste release, pra cortar ambiguidade.
 
 ## Premissas e restrições
 
@@ -58,6 +58,6 @@ Regras de uso:
 - Nome do arquivo: `docs/epicos/<release>-<slug>.md` (ex.: `r1-substituir-planilha.md`). Ver convenção em `docs/process/processo-desenvolvimento-sdd.md`.
 - Um Épico por release. Todo release tem.
 - NÃO é artefato de board: não lista subtasks nem rastreia status de Story. O agrupamento das Stories é via release + prefixo numérico no board; este doc é só a intenção (PRD enxuto).
-- NÃO duplica o roadmap: o roadmap tem a entrada de uma linha; o Épico a expande just-in-time quando o release vira a vez.
+- O roadmap é um esboço de planejamento (não-oficial); este Épico é o registro oficial da intenção do release. Pode repetir conteúdo do roadmap sem cerimônia.
 - Vive em `docs/epicos/`, no mesmo repo do código. É doc vivo até o release ser entregue (Status: Entregue).
 -->

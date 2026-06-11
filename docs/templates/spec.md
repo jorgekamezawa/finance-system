@@ -36,7 +36,7 @@ Exemplos concretos (cada linha vira um caso de teste). Obrigatório sempre que h
 
 ## Dependências / pré-requisitos
 
-O que precisa estar pronto ou decidido antes de implementar. Liste só dependências concretas e não óbvias — o artefato/contrato upstream de que esta Spec realmente depende, não a sequência cronológica de releases (que o roadmap já impõe). Se não houver dependência não óbvia, deixe vazio.
+O que precisa estar pronto ou decidido antes de implementar. Liste só dependências concretas e não óbvias — o artefato/contrato upstream de que esta Spec realmente depende, não a sequência cronológica de releases (que a sequência de releases já dá). Se não houver dependência não óbvia, deixe vazio.
 
 - Artefato/contrato upstream específico (ex.: "modelo de transação do R1 estável", "nível de item do R6").
 - ADRs/RFCs que restringem esta Spec.

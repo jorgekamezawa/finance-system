@@ -47,5 +47,5 @@ O front do Sistema de Finanças: SPA em **React** (básico; "backend-heavy fulls
 ## Notas
 
 - Front é **básico** de propósito. Bibliotecas de **roteamento, estado ou data-fetching** (ex.: React Router, TanStack Query) entram só quando uma feature pedir — não pré-instale.
-- O front consome a API do `api/`; em dev local roda à parte (`npm run dev`), fora do `compose.yaml` do `api/`.
+- O front consome a API do `api/`. Dois modos: no dia a dia roda à parte (`npm run dev`, hot reload), fora do `compose.yaml` do `api/`; no `compose.yaml` da **raiz** (o esqueleto integrado do R0) o `web` sobe como **imagem buildada servida por nginx** (estágio final do multi-stage), não o dev server.
 - A estrutura de `src/` se define quando o front do R0 nascer; atualize este arquivo conforme estabiliza.

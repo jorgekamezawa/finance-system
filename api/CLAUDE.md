@@ -24,7 +24,7 @@ O core do Sistema de Finanças: API em **FastAPI** sobre **Postgres**. Este arqu
 - Formatar: `uv run ruff format`
 - Tipos (porteira do CI): `uv run mypy .`
 - Migrations (a partir do Nível 1): `uv run alembic upgrade head` / `uv run alembic revision --autogenerate -m "..."`
-- Stack local (app + Postgres): `docker compose up` (lê o `compose.yaml` desta pasta)
+- Postgres local: `docker compose up` (lê o `compose.yaml` desta pasta, que sobe só o banco); a api roda no host com `uv run fastapi dev app/main.py`
 
 ## Arquitetura & princípios (back-end)
 
@@ -63,5 +63,5 @@ Os princípios gerais (Clean Code, SOLID, YAGNI, comentários) estão na raiz; a
 
 ## Notas
 
-- Dois composes: o **desta pasta** sobe **só** o core (app + Postgres) e, com `npm run dev` no `web/`, forma o loop de dev do dia a dia; o `compose.yaml` da **raiz** sobe o **esqueleto integrado** do R0 (web+api+db em imagens prod-like multi-stage) — é prova de integração, não o fluxo diário.
+- Dois composes: o **desta pasta** sobe **só o Postgres** — a api roda no host (`uv run fastapi dev app/main.py`) e, com `npm run dev` no `web/`, formam o loop de dev do dia a dia (reload e debug nativos); o `compose.yaml` da **raiz** sobe o **esqueleto integrado** do R0 (web+api+db em imagens prod-like multi-stage) — é prova de integração, não o fluxo diário.
 - O layout de `app/` (rotas, modelos, schemas, etc.) se define no R0; atualize este arquivo conforme a estrutura estabiliza.

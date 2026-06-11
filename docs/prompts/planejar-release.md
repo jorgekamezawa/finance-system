@@ -8,4 +8,5 @@ Leia o épico docs/epicos/<release>-<slug>.md e os ADRs/RFCs relacionados em @do
 Proponha a quebra do release em Stories (fatias verticais de valor, INVEST), cada uma com objetivo + critério de aceite. Back e front são subtasks sob uma Story, não Stories separadas.
 NÃO crie nada ainda — me apresente a lista e espere minha aprovação explícita.
 Depois que eu aprovar: crie as cascas de Story no board (GitHub Projects, via gh CLI), em Backlog, com o prefixo numérico que liga ao épico. Pra criar as Stories (comandos gh, labels, assignee), siga @docs/process/operar-board.md. Não escreva Specs — elas vêm uma por vez, depois.
+Por fim, gere no chat (pra eu copiar) um prompt de handoff pro Claude.ai baseado em @docs/prompts/gerar-spec.md: preencha o bloco de contexto do release com todas as Stories (nº, objetivo, critério de aceite) e deixe o placeholder de qual Story eu vou specar. É descartável — não salve em arquivo.
 ```

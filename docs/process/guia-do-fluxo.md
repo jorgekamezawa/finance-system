@@ -34,8 +34,8 @@ Acontece **uma vez**. Aqui a RFC fundadora e os ADRs vêm **antes** do Épico (n
 | 1 | Épico do release | Claude.ai | `gerar-epico` | Épico (intenção) | `docs/epicos/<release>-<slug>.md` | você revisa |
 | 2 | RFC *(só se grande/arriscado)* | Claude.ai | `gerar-rfc` | RFC | `docs/rfc/RFC-NNNN-<slug>.md` | você revisa; aponta ADRs |
 | 3 | ADR *(só se bifurcação real)* | Claude.ai | `gerar-adr` | ADR | `docs/adr/ADR-NNNN-<slug>.md` | você revisa |
-| 4 | Planejar release | Claude Code | `planejar-release` | propõe Stories e cria as cascas no board (Backlog) | board (ver `operar-board.md`) | aprova a lista antes de criar |
-| 5 | Spec *(uma por Story, just-in-time)* | Claude.ai | `gerar-spec` | Spec | `docs/specs/<release>-<slug>.md` | você revisa |
+| 4 | Planejar release | Claude Code | `planejar-release` | propõe Stories e cria as cascas no board (Backlog); gera o prompt de handoff pra Spec (chat) | board (ver `operar-board.md`) | aprova a lista antes de criar |
+| 5 | Spec *(uma por Story, just-in-time)* | Claude.ai | `gerar-spec` | Spec (do prompt de handoff colado, gerado no passo 4) | `docs/specs/<release>-<slug>.md` | você revisa |
 | 6 | Decompor Spec | Claude Code | `decompor-spec` | ajusta a Story e cria as subtasks no board | board (ver `operar-board.md`) | aprova a quebra antes de criar |
 | 7 | Implementar *(por subtask)* | Claude Code | — | branch `feat/`/`fix/` referenciando a subtask → código + testes → PR | código + PR | squash merge |
 | 8 | Verify | você (+ Claude Code de apoio) | `verificar-contra-spec` | parecer da implementação vs. Spec (não altera código) | — | a decisão é sua |

@@ -1,0 +1,14 @@
+# Local environment / secrets
+.env
+.venv/
+
+# Python caches and build artifacts
+__pycache__/
+*.py[cod]
+
+# Tooling caches and coverage
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/

@@ -1,0 +1,48 @@
+[project]
+name = "finance-system-api"
+version = "0.1.0"
+description = "Core API of the personal finance system (FastAPI)."
+requires-python = ">=3.13,<3.14"
+dependencies = [
+    "fastapi[standard]>=0.136.3",
+    "psycopg[binary]>=3.3.4",
+    "pydantic-settings>=2.14.1",
+]
+
+[dependency-groups]
+dev = [
+    "mypy>=2.1.0",
+    "pytest>=9.0.3",
+    "pytest-asyncio>=1.4.0",
+    "pytest-cov>=7.1.0",
+    "ruff>=0.15.17",
+    "testcontainers[postgres]>=4.14.2",
+]
+
+[tool.uv]
+package = false
+
+[tool.ruff]
+target-version = "py313"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
+
+[tool.mypy]
+python_version = "3.13"
+strict = true
+plugins = ["pydantic.mypy"]
+
+[[tool.mypy.overrides]]
+module = ["testcontainers.*"]
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+asyncio_mode = "auto"
+addopts = "-ra"
+markers = [
+    "integration: tests that need Docker (a real Postgres via Testcontainers)",
+]

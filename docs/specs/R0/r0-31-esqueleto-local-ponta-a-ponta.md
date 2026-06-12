@@ -64,7 +64,7 @@ O front fala com a API por HTTP **cross-origin**: lê a base da API de env (`VIT
 Dois modos de rodar local (resolve a aparente contradição com `api/CLAUDE.md` e `web/CLAUDE.md`):
 
 - `compose.yaml` da **raiz** = o esqueleto integrado (web+api+db containerizados, imagens prod-like multi-stage) — é o que esta Story entrega.
-- `api/compose.yaml` (db+api) + `npm run dev` no front = loop de desenvolvimento do dia a dia (hot reload), já descrito nos CLAUDE.md — **não** é entregável desta Story.
+- `api/compose.yaml` (só o Postgres) + a api no host (`uv run fastapi dev`) + `npm run dev` no front = loop de desenvolvimento do dia a dia (hot reload), já descrito nos CLAUDE.md — **não** é entregável desta Story.
 
 ## Contratos
 
@@ -95,6 +95,7 @@ Nenhuma tabela nesta Story. A readiness do Postgres é uma query leve (`SELECT 1
 
 - [2026-06-11] Front↔API via **CORS** (cross-origin), com o front lendo a base de `VITE_API_URL`, contra a alternativa "mesma origem via proxy". Escolhido por ser padrão de mercado, genérico, multi-backend e agnóstico de linguagem. Não vira ADR (evita proliferação).
 - [2026-06-11] Health: um único `GET /health` de readiness (inclui Postgres), **sem** split liveness/readiness — o split só ganha consumidor com orquestrador fazendo probes (k8s, Nível 3); YAGNI aqui.
+- [2026-06-11] Loop de dev local do back: o `api/compose.yaml` sobe **só o Postgres** e a api roda no host (`uv run fastapi dev`), em vez de subir db+api no compose. Mais simples, com reload e debugger nativos; a api segue containerizada no esqueleto integrado (#38) e em produção, então o Dockerfile multi-stage continua exercitado. Refletido nos `api/CLAUDE.md`.
 - [2026-06-11] Config do **front é build-time** no R0: `VITE_*` é inlinado pelo Vite no build, então o bundle sai com a URL da API "assada" e ela entra como **build arg** do estágio de build. Aceito por simplicidade (YAGNI). Tensão registrada: difere do 12-factor runtime do `api` e da promoção do mesmo artefato (`estrategia-branch-pr.md`); injeção em runtime (env.js gerado no start do container / `envsubst` no nginx) fica como evolução se a promoção do artefato do front passar a doer.
 
 ## NFRs
